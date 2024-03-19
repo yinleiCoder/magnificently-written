@@ -19,6 +19,7 @@ Here's a brief overview of the tech stack that's used to build `Magnificently Wr
 - [Shadcn/ui](https://ui.shadcn.com/), Build your component library, you can find these component at `app/components/ui`
 - [Convex](https://www.convex.dev/), Backend and database `npx convex dev`
 - [Clerk](https://clerk.com/), The most comprehensive User Management Platform
+- [usehooks-ts](https://usehooks-ts.com/), React hook library, ready to use, written in Typescript
 
 There are several open-source libraries that i use.Without them, it would not have been possible to build `Magnificently Written`.
 
