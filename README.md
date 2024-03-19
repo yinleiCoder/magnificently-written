@@ -6,7 +6,8 @@ A open-source blog that simplifies the process of creating, updating, and sharin
 
 ## Features
 
-- 
+- Theme toggle for eyes
+- Clerk for github login
 
 ## Teach Stack
 
@@ -16,6 +17,8 @@ Here's a brief overview of the tech stack that's used to build `Magnificently Wr
 - [Nextjs](https://nextjs.org/), The React Framework for the Web
 - [Tailwindcss](https://tailwindcss.com/), A utility-first CSS framework packed with classes
 - [Shadcn/ui](https://ui.shadcn.com/), Build your component library, you can find these component at `app/components/ui`
+- [Convex](https://www.convex.dev/), Backend and database `npx convex dev`
+- [Clerk](https://clerk.com/), The most comprehensive User Management Platform
 
 There are several open-source libraries that i use.Without them, it would not have been possible to build `Magnificently Written`.
 

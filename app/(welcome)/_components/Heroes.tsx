@@ -8,7 +8,7 @@ function Heroes() {
           src="/images/home-hero.webp"
           alt="welcome my website"
           fill
-          className="object-cover filter-none dark:brightness-0 dark:invert"
+          className="object-cover filter-none dark:brightness-0 dark:invert select-none"
         />
       </div>
     </div>
