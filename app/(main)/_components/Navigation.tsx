@@ -3,12 +3,34 @@
 import { ElementRef, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useMediaQuery } from "usehooks-ts";
-import { ChevronsLeft, MenuIcon } from "lucide-react";
+import { useMutation } from "convex/react";
+import {
+  ChevronsLeft,
+  MenuIcon,
+  Plus,
+  PlusCircle,
+  Search,
+  Settings,
+  Trash2,
+} from "lucide-react";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { toast } from "sonner";
+import { api } from "@/convex/_generated/api";
 import { cn } from "@/lib/utils";
+import UserItem from "./UserItem";
+import Item from "./Item";
+import DocumentList from "./DocumentList";
+import TrashBox from "./TrashBox";
 
 function Navigation() {
   const isMobile = useMediaQuery("(max-width: 768px)");
   const pathname = usePathname();
+
+  const create = useMutation(api.documents.create);
 
   const isResizingRef = useRef(false);
   const sidebarRef = useRef<ElementRef<"aside">>(null);
@@ -94,29 +116,48 @@ function Navigation() {
     }
   };
 
+  const handleCreate = () => {
+    const promise = create({ title: "未命名" });
+
+    toast.promise(promise, {
+      loading: "正在创建笔记中...",
+      success: "新建笔记成功，尽情创作吧！",
+      error: "创建笔记失败，请联系管理员查看Convex控制台",
+    });
+  };
+
   return (
     <>
       <aside
         ref={sidebarRef}
         className={cn(
-          "w-56 group/sidebar h-full bg-[#fbfbfa] overflow-y-auto relative flex flex-col z-[99999]",
+          "w-56 group/sidebar h-full bg-[#fbfbfa] overflow-y-auto relative flex flex-col z-[99999] p-1",
           isResetting && "transition-all ease-in-out duration-300",
           isMobile && "w-0"
         )}
       >
         <div>
-          <p>搜索</p>
-          <p>收信箱</p>
-          <p>设置 & 成员</p>
-          <p>创建新页面</p>
+          <UserItem />
+          <Item label="搜索" icon={Search} isSearch onClick={() => {}} />
+          <Item label="设置" icon={Settings} onClick={() => {}} />
+          <Item onClick={handleCreate} label="创建笔记" icon={PlusCircle} />
         </div>
         <div className="mt-4">
-          <p>Untitled</p>
-          <p>Personal Home</p>
-          <p>Task List</p>
-          <p>Journal</p>
-          <p>Reading List</p>
-          <p>Add a Page</p>
+          <DocumentList />
+          <Item onClick={handleCreate} icon={Plus} label="添加新笔记" />
+        </div>
+        <div className="mt-4">
+          <Popover>
+            <PopoverTrigger className="w-full">
+              <Item label="垃圾桶" icon={Trash2} />
+            </PopoverTrigger>
+            <PopoverContent
+              side={isMobile ? "bottom" : "right"}
+              className="w-72 p-0"
+            >
+              <TrashBox />
+            </PopoverContent>
+          </Popover>
         </div>
         {/* 左右分割线 */}
         <div
@@ -128,14 +169,15 @@ function Navigation() {
         <div
           onClick={collapse}
           className={cn(
-            "h-6 w-6 text-muted-foreground rounded-md hover:bg-neutral-200 dark:hover:bg-neutral-600 absolute top-2 right-4 opacity-0 group-hover/sidebar:opacity-100 transition",
+            "h-6 w-6 text-muted-foreground rounded-md hover:bg-neutral-200 dark:hover:bg-neutral-600 absolute top-3 right-4 p-1 opacity-0 group-hover/sidebar:opacity-100 transition flex items-center justify-center",
             isMobile && "opacity-100"
           )}
           role="button"
         >
-          <ChevronsLeft className="h-6 w-6" />
+          <ChevronsLeft className="h-5 w-5" />
         </div>
       </aside>
+
       {/* 顶部工具栏 */}
       <div
         ref={navbarRef}

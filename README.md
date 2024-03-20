@@ -8,6 +8,8 @@ A open-source blog that simplifies the process of creating, updating, and sharin
 
 - Theme toggle for eyes
 - Clerk for github login
+- Creating notes with infinite levels of hierarchy
+- Trash box for soft deleting notes
 
 ## Teach Stack
 
@@ -20,6 +22,7 @@ Here's a brief overview of the tech stack that's used to build `Magnificently Wr
 - [Convex](https://www.convex.dev/), Backend and database `npx convex dev`
 - [Clerk](https://clerk.com/), The most comprehensive User Management Platform
 - [usehooks-ts](https://usehooks-ts.com/), React hook library, ready to use, written in Typescript
+- [Sonner](https://sonner.emilkowal.ski/), An opinionated toast component for React.
 
 There are several open-source libraries that i use.Without them, it would not have been possible to build `Magnificently Written`.
 
