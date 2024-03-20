@@ -1,6 +1,8 @@
 "use client";
 
+import Cover from "@/components/Cover";
 import Toolbar from "@/components/Toolbar";
+import { Skeleton } from "@/components/ui/skeleton";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import { useQuery } from "convex/react";
@@ -18,7 +20,11 @@ function DocumentIdPage({ params }: DocumentIdPageProps) {
   });
 
   if (document === undefined) {
-    return <div>loading..</div>;
+    return (
+      <div>
+        <Cover.Skeleton />
+      </div>
+    );
   }
 
   if (document === null) {
@@ -28,7 +34,7 @@ function DocumentIdPage({ params }: DocumentIdPageProps) {
   return (
     <div className="pb-40">
       {/* 笔记封面图 */}
-      <div className="h-[35vh] bg-red-300" />
+      <Cover url={document.coverImage} />
       {/* 笔记编辑区域 */}
       <div className="md:max-w-3xl lg:max-w-4xl mx-auto">
         <Toolbar initialData={document} />

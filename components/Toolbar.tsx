@@ -8,6 +8,7 @@ import { api } from "@/convex/_generated/api";
 import { Doc } from "@/convex/_generated/dataModel";
 import IconPicker from "./IconPicker";
 import { Button } from "./ui/button";
+import { useCoverImageStore } from "@/hooks/useCoverImage";
 
 interface ToolbarProps {
   initialData: Doc<"documents">;
@@ -19,6 +20,7 @@ function Toolbar({ initialData, preview }: ToolbarProps) {
   const inputRef = useRef<ElementRef<"textarea">>(null);
   const [isEditing, setIsEditing] = useState(false);
   const [value, setValue] = useState(initialData.title);
+  const coverImageStore = useCoverImageStore();
 
   const update = useMutation(api.documents.update);
   const removeIcon = useMutation(api.documents.removeIcon);
@@ -101,8 +103,9 @@ function Toolbar({ initialData, preview }: ToolbarProps) {
             </Button>
           </IconPicker>
         )}
-        {!initialData.icon && !preview && (
+        {!initialData.coverImage && !preview && (
           <Button
+            onClick={coverImageStore.onOpen}
             className="text-muted-foreground text-xs"
             variant="ghost"
             size="sm"

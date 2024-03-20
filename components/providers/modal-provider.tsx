@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import SettingsModal from "../modals/SettingsModal";
+import CoverImageModal from '../modals/CoverImageModal';
 
 function ModalProvider() {
   // 解决客户端组件在server上的拟合错误
@@ -17,6 +18,7 @@ function ModalProvider() {
   return (
     <>
       <SettingsModal />
+      <CoverImageModal />
     </>
   );
 }

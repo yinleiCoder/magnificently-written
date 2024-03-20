@@ -54,6 +54,7 @@ function Item({
 }: ItemProps) {
   const router = useRouter();
   const { user } = useUser();
+  
   const ChevronIcon = expanded ? ChevronDown : ChevronRight;
 
   const create = useMutation(api.documents.create);
