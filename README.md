@@ -25,6 +25,8 @@ Here's a brief overview of the tech stack that's used to build `Magnificently Wr
 - [usehooks-ts](https://usehooks-ts.com/), React hook library, ready to use, written in Typescript
 - [Sonner](https://sonner.emilkowal.ski/), An opinionated toast component for React
 - [Zustand](https://zustand-demo.pmnd.rs/), A small, fast, and scalable bearbones state management solution
+- [Emoji Picker React](https://github.com/ealush/emoji-picker-react), The most popular React Emoji Picker
+- [React Textarea Autosize](https://github.com/Andarist/react-textarea-autosize#readme), Textarea component for React which grows with content
 
 There are several open-source libraries that i use.Without them, it would not have been possible to build `Magnificently Written`.
 
