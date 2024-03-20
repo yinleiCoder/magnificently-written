@@ -40,7 +40,7 @@ export const getSidebar = query({
         const documents = await ctx.db.query("documents")
             .withIndex("by_user_parent", q =>
                 q.eq("userId", userId)
-                    .eq("parentDocument", args.parentDocument)
+                .eq("parentDocument", args.parentDocument)
             )
             .filter(q => q.eq(q.field("isArchived"), false))
             .order("desc")
@@ -192,4 +192,25 @@ export const remove = mutation({
         const document = await ctx.db.delete(args.id)
         return document
     },
+})
+
+// 获取command指定的搜索内容
+export const getSearch = query({
+    handler: async (ctx) => {
+        const identity = await ctx.auth.getUserIdentity()
+        if (!identity) {
+            throw new Error("凭证无效，请登录")
+        }
+
+        const userId = identity.subject
+
+        const documents = await ctx.db
+            .query("documents")
+            .withIndex("by_user", q => q.eq("userId", userId))
+            .filter(q => q.eq(q.field("isArchived"), false))
+            .order("desc")
+            .collect()
+
+        return documents
+    }
 })

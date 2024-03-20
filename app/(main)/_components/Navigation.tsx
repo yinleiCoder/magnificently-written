@@ -25,8 +25,13 @@ import UserItem from "./UserItem";
 import Item from "./Item";
 import DocumentList from "./DocumentList";
 import TrashBox from "./TrashBox";
+import { useSearchStore } from "@/hooks/useSearch";
+import { useSettingsStore } from "@/hooks/useSettings";
 
 function Navigation() {
+  const searchStore = useSearchStore();
+  const settingsStore = useSettingsStore();
+
   const isMobile = useMediaQuery("(max-width: 768px)");
   const pathname = usePathname();
 
@@ -131,15 +136,20 @@ function Navigation() {
       <aside
         ref={sidebarRef}
         className={cn(
-          "w-56 group/sidebar h-full bg-[#fbfbfa] overflow-y-auto relative flex flex-col z-[99999] p-1",
+          "w-56 group/sidebar h-full bg-[#fbfbfa] dark:bg-[#1F1F1F] overflow-y-auto relative flex flex-col z-[99999] p-1",
           isResetting && "transition-all ease-in-out duration-300",
           isMobile && "w-0"
         )}
       >
         <div>
           <UserItem />
-          <Item label="搜索" icon={Search} isSearch onClick={() => {}} />
-          <Item label="设置" icon={Settings} onClick={() => {}} />
+          <Item
+            label="搜索"
+            icon={Search}
+            isSearch
+            onClick={searchStore.onOpen}
+          />
+          <Item label="设置" icon={Settings} onClick={settingsStore.onOpen} />
           <Item onClick={handleCreate} label="创建笔记" icon={PlusCircle} />
         </div>
         <div className="mt-4">

@@ -110,7 +110,7 @@ function Item({
       {!!id && (
         <div
           role="button"
-          className="h-full rounded hover:bg-neutral-200 mr-1 dark:bg-neutral-600 transition"
+          className="h-full rounded hover:bg-neutral-200 mr-1 dark:hover:bg-neutral-600 transition"
           onClick={handleExpand}
         >
           <ChevronIcon className="w-4 h-4 shrink-0 text-muted-foreground/50" />
@@ -155,8 +155,6 @@ function Item({
                 <Trash2 className="w-4 h-4 mr-2" />
                 删除
               </DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>Billing</DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem className="text-xs text-muted-foreground">
                 最近编辑: {user?.fullName}
