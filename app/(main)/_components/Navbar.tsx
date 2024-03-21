@@ -7,6 +7,7 @@ import { MenuIcon } from "lucide-react";
 import { useParams } from "next/navigation";
 import Title from "./Title";
 import Banner from "./Banner";
+import Publish from "./Publish";
 
 interface NavbarProps {
   isCollasped: boolean;
@@ -45,6 +46,7 @@ function Navbar({ isCollasped, onResetWidth }: NavbarProps) {
         <div className="w-full flex items-center justify-between">
           <Title initialData={document} />
           <div className="flex items-center gap-x-2">
+            <Publish initialData={document} />
           </div>
         </div>
       </nav>
