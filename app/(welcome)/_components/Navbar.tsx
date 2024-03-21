@@ -6,10 +6,10 @@ import { useScrollTop } from "@/hooks/useScrollTop";
 import { useConvexAuth } from "convex/react";
 import { SignInButton, UserButton } from "@clerk/clerk-react";
 import { Button } from "@/components/ui/button";
-import { ModeToggle } from "@/components/ThemeToggle";
+import { ModeToggle } from "@/components/themeToggle";
 import Spinner from "@/components/Spinner";
 import Link from "next/link";
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight } from "lucide-react";
 
 function Navbar() {
   const scrolled = useScrollTop();
