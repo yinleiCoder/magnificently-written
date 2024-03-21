@@ -29,12 +29,7 @@ function Navbar() {
         {!isAuthenticated && !isLoading && (
           <>
             <SignInButton mode="modal">
-              <Button variant="ghost" size="sm">
-                登录
-              </Button>
-            </SignInButton>
-            <SignInButton mode="modal">
-              <Button size="sm">加入我们的讨论</Button>
+              <Button size="sm">登录</Button>
             </SignInButton>
           </>
         )}
@@ -42,7 +37,7 @@ function Navbar() {
           <>
             <Button size="sm" asChild>
               <Link href="/documents">
-                进入斐然成章
+                笔记编辑器
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
             </Button>

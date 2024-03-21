@@ -25,6 +25,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useUser } from "@clerk/clerk-react";
+import TooltipMessage from "@/components/TooltipMessage";
 
 interface ItemProps {
   id?: Id<"documents">;
@@ -164,13 +165,15 @@ function Item({
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-          <div
-            role="button"
-            onClick={onCreate}
-            className="opacity-0 group-hover:opacity-100 h-full ml-auto rounded-sm hover:bg-neutral-200 dark:hover:bg-neutral-600"
-          >
-            <Plus className="w-4 h-4 text-muted-foreground" />
-          </div>
+          <TooltipMessage message="在此笔记下无限层级创建子笔记，层级组织由您决定">
+            <div
+              role="button"
+              onClick={onCreate}
+              className="opacity-0 group-hover:opacity-100 h-full ml-auto rounded-sm hover:bg-neutral-200 dark:hover:bg-neutral-600"
+            >
+              <Plus className="w-4 h-4 text-muted-foreground" />
+            </div>
+          </TooltipMessage>
         </div>
       )}
     </div>

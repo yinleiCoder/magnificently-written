@@ -8,6 +8,7 @@ import { useParams } from "next/navigation";
 import Title from "./Title";
 import Banner from "./Banner";
 import Publish from "./Publish";
+import TooltipMessage from "@/components/TooltipMessage";
 
 interface NavbarProps {
   isCollasped: boolean;
@@ -44,9 +45,13 @@ function Navbar({ isCollasped, onResetWidth }: NavbarProps) {
           />
         )}
         <div className="w-full flex items-center justify-between">
-          <Title initialData={document} />
+          <TooltipMessage message="点击重命名此笔记">
+            <Title initialData={document} />
+          </TooltipMessage>
           <div className="flex items-center gap-x-2">
-            <Publish initialData={document} />
+            <TooltipMessage message="默认创建的笔记都是私密的，由笔记创建者自行决定是否公开发布">
+              <Publish initialData={document} />
+            </TooltipMessage>
           </div>
         </div>
       </nav>

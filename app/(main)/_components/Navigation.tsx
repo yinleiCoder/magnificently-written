@@ -28,6 +28,7 @@ import TrashBox from "./TrashBox";
 import { useSearchStore } from "@/hooks/useSearch";
 import { useSettingsStore } from "@/hooks/useSettings";
 import Navbar from "./Navbar";
+import TooltipMessage from "@/components/TooltipMessage";
 
 function Navigation() {
   const searchStore = useSearchStore();

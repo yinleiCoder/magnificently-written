@@ -8,6 +8,8 @@ import { ConvexClientProvider } from "@/components/providers/convex-provider";
 import { Toaster } from "@/components/ui/sonner";
 import ModalProvider from "@/components/providers/modal-provider";
 import { EdgeStoreProvider } from "../lib/edgestore";
+import { cn } from "@/lib/utils";
+import MouseContextMenu from "@/components/MouseContextMenu";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -37,7 +39,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={cn(inter.className, "dark:bg-[#1F1F1F]")}>
         <ConvexClientProvider>
           <EdgeStoreProvider>
             <ThemeProvider
@@ -49,7 +51,7 @@ export default function RootLayout({
             >
               <Toaster />
               <ModalProvider />
-              {children}
+              <MouseContextMenu>{children}</MouseContextMenu>
               <Analytics />
               <SpeedInsights />
             </ThemeProvider>

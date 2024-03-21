@@ -6,6 +6,7 @@ import Navigation from "./_components/Navigation";
 import Spinner from "@/components/Spinner";
 import SearchCommand from "@/components/SearchCommand";
 
+// 笔记、编辑器的布局
 function MainLayout({ children }: { children: React.ReactNode }) {
   const { isAuthenticated, isLoading } = useConvexAuth();
 
