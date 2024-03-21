@@ -11,6 +11,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { MouseEvent } from "react";
 
 interface ConfirmModalProps {
   children: React.ReactNode;
@@ -19,9 +20,9 @@ interface ConfirmModalProps {
 
 // 带确认按钮的对话框
 function ConfirmModal({ children, onConfirm }: ConfirmModalProps) {
-  const handleConfirm = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const handleConfirm = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    onConfirm()
+    onConfirm();
   };
 
   return (
