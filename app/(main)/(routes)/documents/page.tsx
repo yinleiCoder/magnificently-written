@@ -5,21 +5,25 @@ import { useMutation } from "convex/react";
 import { PlusCircle } from "lucide-react";
 import { api } from "@/convex/_generated/api";
 import Image from "next/image";
-import { toast } from "sonner"
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 function DocumentPage() {
+  const router = useRouter();
   const { user } = useUser();
   const create = useMutation(api.documents.create);
 
   const onCreate = () => {
-    const promise = create({ title: "未命名" });
+    const promise = create({ title: "未命名" }).then((documentId) =>
+      router.push(`/documents/${documentId}`)
+    );
 
     toast.promise(promise, {
       loading: "正在创建笔记...",
       success: "已新建笔记，尽情创作吧！",
-      error: "创建笔记失败，请联系管理员查看Convex控制台"
-    })
+      error: "创建笔记失败，请联系管理员查看Convex控制台",
+    });
   };
 
   return (

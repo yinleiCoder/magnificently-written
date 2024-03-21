@@ -69,7 +69,7 @@ function Toolbar({ initialData, preview }: ToolbarProps) {
     <div className="pl-[54px] group relative">
       {/* 作者自己看到的图标 */}
       {!!initialData.icon && !preview && (
-        <div className="flex items-center gap-x-2 group/icon pt-6">
+        <div className="flex items-center gap-x-2 group/icon relative -top-5">
           <IconPicker onChange={onIconSelect}>
             <p className="text-6xl hover:opacity-75 transition">
               {initialData.icon}
@@ -87,7 +87,7 @@ function Toolbar({ initialData, preview }: ToolbarProps) {
       )}
       {/* 访客看到的图标 */}
       {!!initialData.icon && preview && (
-        <p className="text-6xl pt-6">{initialData.icon}</p>
+        <p className="text-6xl relative -top-5">{initialData.icon}</p>
       )}
       {/* 工具栏的添加icon、cover等 */}
       <div className="opacity-0 group-hover:opacity-100 flex items-center gap-x-1 py-4">

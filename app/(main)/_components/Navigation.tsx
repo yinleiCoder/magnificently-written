@@ -1,7 +1,7 @@
 "use client";
 
 import { ElementRef, useEffect, useRef, useState } from "react";
-import { useParams, usePathname } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { useMediaQuery } from "usehooks-ts";
 import { useMutation } from "convex/react";
 import {
@@ -27,7 +27,7 @@ import DocumentList from "./DocumentList";
 import TrashBox from "./TrashBox";
 import { useSearchStore } from "@/hooks/useSearch";
 import { useSettingsStore } from "@/hooks/useSettings";
-import Navbar from './Navbar';
+import Navbar from "./Navbar";
 
 function Navigation() {
   const searchStore = useSearchStore();
@@ -36,6 +36,7 @@ function Navigation() {
   const isMobile = useMediaQuery("(max-width: 768px)");
   const pathname = usePathname();
   const params = useParams();
+  const router = useRouter();
 
   const create = useMutation(api.documents.create);
 
@@ -124,7 +125,9 @@ function Navigation() {
   };
 
   const handleCreate = () => {
-    const promise = create({ title: "未命名" });
+    const promise = create({ title: "未命名" }).then((documentId) =>
+      router.push(`/documents/${documentId}`)
+    );
 
     toast.promise(promise, {
       loading: "正在创建笔记中...",
@@ -175,7 +178,10 @@ function Navigation() {
         <div
           onMouseDown={handleMouseDown}
           onClick={resetWidth}
-          className="w-[1px] group-hover/sidebar:w-[2px] cursor-ew-resize transition absolute h-full bg-primary/10 right-0 top-0 bottom-0"
+          className={cn(
+            "w-[1px] group-hover/sidebar:w-[2px] cursor-ew-resize transition absolute h-full bg-primary/10 right-0 top-0 bottom-0",
+            isCollapsed && "w-0"
+          )}
         />
         {/* 折叠箭头 */}
         <div

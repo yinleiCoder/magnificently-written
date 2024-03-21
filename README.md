@@ -11,6 +11,7 @@ A open-source blog that simplifies the process of creating, updating, and sharin
 - Creating notes with infinite levels of hierarchy
 - Command search
 - Trash box for soft deleting notes
+- Block-Based rich text editor
 
 ## Teach Stack
 
@@ -27,10 +28,15 @@ Here's a brief overview of the tech stack that's used to build `Magnificently Wr
 - [Zustand](https://zustand-demo.pmnd.rs/), A small, fast, and scalable bearbones state management solution
 - [Emoji Picker React](https://github.com/ealush/emoji-picker-react), The most popular React Emoji Picker
 - [React Textarea Autosize](https://github.com/Andarist/react-textarea-autosize#readme), Textarea component for React which grows with content
-- [Edge Store](https://edgestore.dev/),Implementing file uploads
-should be easy
+- [Edge Store](https://edgestore.dev/),Implementing file uploads should be easy
+- [Block Note](https://www.blocknotejs.org/),The open source Block-Based rich text editor
 
 There are several open-source libraries that i use.Without them, it would not have been possible to build `Magnificently Written`.
+
+## Not Free
+
+- [Convex](https://dashboard.convex.dev/t/yinleicoder/magnificently-written/hallowed-spaniel-855/data?table=documents)
+- [EdgeStore](https://dashboard.edgestore.dev/projects/jaypcxxsepgpdyr5/buckets/barsce6hahyh9tng)
 
 ## Contributing
 

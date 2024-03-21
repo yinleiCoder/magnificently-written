@@ -54,7 +54,7 @@ function Item({
 }: ItemProps) {
   const router = useRouter();
   const { user } = useUser();
-  
+
   const ChevronIcon = expanded ? ChevronDown : ChevronRight;
 
   const create = useMutation(api.documents.create);
@@ -75,7 +75,7 @@ function Item({
         if (!expanded) {
           onExpand?.();
         }
-        // router.push(`/documents/${documentId}`);
+        router.push(`/documents/${documentId}`);
       }
     );
 
@@ -89,7 +89,9 @@ function Item({
   const onArchive = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     event.stopPropagation();
     if (!id) return;
-    const promise = archive({ id });
+    const promise = archive({ id }).then((documentId) =>
+      router.push(`/documents`)
+    );
     toast.promise(promise, {
       loading: "正在删除该笔记及其下笔记...",
       success: "该笔记及其下笔记成功移动到垃圾桶!",
