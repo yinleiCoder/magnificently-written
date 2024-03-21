@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { ConvexClientProvider } from "@/components/providers/convex-provider";
 import { Toaster } from "@/components/ui/sonner";
@@ -48,6 +50,8 @@ export default function RootLayout({
               <Toaster />
               <ModalProvider />
               {children}
+              <Analytics />
+              <SpeedInsights />
             </ThemeProvider>
           </EdgeStoreProvider>
         </ConvexClientProvider>
