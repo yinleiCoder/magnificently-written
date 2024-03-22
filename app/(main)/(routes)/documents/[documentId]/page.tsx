@@ -1,12 +1,15 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useMemo } from "react";
+import { useMemo, useRef } from "react";
 import { useMutation, useQuery } from "convex/react";
 import Toolbar from "@/components/Toolbar";
 import Cover from "@/components/Cover";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
+import { Button } from "@/components/ui/button";
+import { Save } from "lucide-react";
+import { toast } from "sonner";
 interface DocumentIdPageProps {
   params: {
     documentId: Id<"documents">;
@@ -15,6 +18,7 @@ interface DocumentIdPageProps {
 
 // 笔记编辑页
 function DocumentIdPage({ params }: DocumentIdPageProps) {
+  const editorContent = useRef<string>("");
   const Editor = useMemo(
     () => dynamic(() => import("@/components/Editor"), { ssr: false }),
     []
@@ -38,9 +42,19 @@ function DocumentIdPage({ params }: DocumentIdPageProps) {
   }
 
   const onChange = (content: string) => {
-    update({
+    editorContent.current = content;
+  };
+
+  const handleSave = () => {
+    const promise = update({
       id: params.documentId,
-      content,
+      content: editorContent.current,
+    });
+    toast.promise(promise, {
+      loading: "保存笔记中",
+      success: "笔记保存成功！",
+      error:
+        "发布笔记失败，请重试或联系管理员查看Convex控制台，大概率是因为Convex的Free Plan下Database Bandwidth已抵达1GB，请购买Convex专业版",
     });
   };
 
@@ -57,6 +71,13 @@ function DocumentIdPage({ params }: DocumentIdPageProps) {
           onChange={onChange}
           initialContent={document.content}
         />
+        <Button
+          className="fixed bottom-5 right-4 rounded-full"
+          variant="secondary"
+          onClick={handleSave}
+        >
+          <Save className="w-4 h-4" />
+        </Button>
       </div>
     </div>
   );
