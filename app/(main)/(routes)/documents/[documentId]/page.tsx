@@ -10,6 +10,7 @@ import { Id } from "@/convex/_generated/dataModel";
 import { Button } from "@/components/ui/button";
 import { Save } from "lucide-react";
 import { toast } from "sonner";
+import TooltipMessage from "@/components/TooltipMessage";
 interface DocumentIdPageProps {
   params: {
     documentId: Id<"documents">;
@@ -76,7 +77,9 @@ function DocumentIdPage({ params }: DocumentIdPageProps) {
           variant="outline"
           onClick={handleSave}
         >
-          <Save className="w-4 h-4" />
+          <TooltipMessage message="保存笔记">
+            <Save className="w-4 h-4" />
+          </TooltipMessage>
         </Button>
       </div>
     </div>
