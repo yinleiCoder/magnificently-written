@@ -30,6 +30,7 @@ Here's a brief overview of the tech stack that's used to build `Magnificently Wr
 - [React Textarea Autosize](https://github.com/Andarist/react-textarea-autosize#readme), Textarea component for React which grows with content
 - [Edge Store](https://edgestore.dev/),Implementing file uploads should be easy
 - [Block Note](https://www.blocknotejs.org/),The open source Block-Based rich text editor
+- [next-video](https://next-video.dev/docs),Add high-performance video to your Next.js app
 
 There are several open-source libraries that i use.Without them, it would not have been possible to build `Magnificently Written`.
 
