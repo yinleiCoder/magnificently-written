@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/themeToggle";
 import Spinner from "@/components/Spinner";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Tv } from "lucide-react";
 
 function Navbar() {
   const scrolled = useScrollTop();
@@ -31,6 +31,16 @@ function Navbar() {
             <SignInButton mode="modal">
               <Button size="sm">登录</Button>
             </SignInButton>
+          </>
+        )}
+        {isAuthenticated && !isLoading && (
+          <>
+            <Button size="sm" variant="ghost" asChild>
+              <Link href="/videos">
+                视频
+                <Tv className="w-4 h-4 ml-2" />
+              </Link>
+            </Button>
           </>
         )}
         {isAuthenticated && !isLoading && (

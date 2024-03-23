@@ -5,7 +5,7 @@ import {
   ContextMenuItem,
   ContextMenuTrigger,
 } from "@/components/ui/context-menu";
-import { Forward, Home, Pencil, Undo2 } from "lucide-react";
+import { Forward, Home, Pencil, Tv, Undo2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { ModeToggle } from "./themeToggle";
 
@@ -26,6 +26,13 @@ function MouseContextMenu({ children }: MouseContextMenuProps) {
         >
           首页
           <Home className="text-muted-foreground w-4 h-4" />
+        </ContextMenuItem>
+        <ContextMenuItem
+          onClick={() => router.push("/videos")}
+          className="flex items-center justify-between"
+        >
+          视频
+          <Tv className="text-muted-foreground w-4 h-4" />
         </ContextMenuItem>
         <ContextMenuItem
           onClick={() => router.push("/documents")}
