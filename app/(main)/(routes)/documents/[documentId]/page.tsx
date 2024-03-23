@@ -72,8 +72,8 @@ function DocumentIdPage({ params }: DocumentIdPageProps) {
           initialContent={document.content}
         />
         <Button
-          className="fixed bottom-5 right-4 rounded-full"
-          variant="secondary"
+          className="fixed bottom-5 right-4 md:right-6 rounded-full text-muted-foreground text-xs px-3 py-2"
+          variant="outline"
           onClick={handleSave}
         >
           <Save className="w-4 h-4" />
